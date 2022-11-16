@@ -3,7 +3,7 @@ import React from 'react'
 export default function Card() {
     const datenew = new Date().toDateString();
     return (
-        <div className='anchored card bg-dark text-white p-2 shadow opacity-85 '>
+        <div className='anchored card bg-dark text-secondary p-2 shadow opacity-85 '>
             <p>{datenew}</p>
             <div className='card-title text-left'>
                 <h4>Higher Order Function in JS</h4>

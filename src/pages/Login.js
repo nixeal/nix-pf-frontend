@@ -23,7 +23,6 @@ export default function Login() {
         } else {
             window.alert("Sucess");
         }
-        <NavLink to={'/'}></NavLink>
     }
     return (
         <>
@@ -65,7 +64,7 @@ export default function Login() {
                                 <label>
                                     <span>
                                         <input type="checkbox" value="remember-me"/></span>
-                                    <p>remember me</p>
+                                    <p>Remember me</p>
                                 </label>
                             </div>
                             <button type="button"

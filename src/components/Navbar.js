@@ -6,13 +6,14 @@ import { Link} from "react-router-dom";
 export default function Navbar() {
     return (
         <>
-            <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark text-secondary shadow opacity-90">
                 <div className="container-fluid">
-                    <Link className="navbar-brand fs-4" to='/'>Nischal Shrestha</Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <Link className="navbar-brand fs-4 text-secondary" to='/'>Nischal Shrestha</Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#closenavbar" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon">
+                        </span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarCollapse">
+                    <div className="collapse navbar-collapse " id="closenavbar">
                         <ul className="navbar-nav fs-6">
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/">Home</Link>
