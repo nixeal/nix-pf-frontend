@@ -17,7 +17,6 @@ export default function Project() {
             }).catch((error) => {
                 console.log(error);
             });
-            console.log(projects.toString());
         };
         getData();
     }, [])

@@ -22,7 +22,6 @@ export default function Writing() {
                     ...res.data
                 ]);
             }).catch(error => console.log(error));
-            console.log(years, write);
         };
         getData();
     }, []);
@@ -38,7 +37,7 @@ export default function Writing() {
 {
     write.map((writing=>{
         return(
-            <WritingCard writing={writing}/>
+            <WritingCard key={writing._id} writing={writing}/>
         )
     }))
 }                            </div>

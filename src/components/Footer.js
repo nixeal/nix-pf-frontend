@@ -1,8 +1,7 @@
 import React from 'react';
-import footer from 'react-bootstrap';
+
 
 export default function Footer() {
-
     const newdate = new Date().getFullYear();
     return (
         <>

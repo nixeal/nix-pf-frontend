@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Writing from './pages/Writing';
 import Project from './pages/Project';
 import Admin from './pages/Admin';
+import WritingPage from './pages/sub-pages/WritingPage';
 
 
 function App() {
@@ -18,14 +19,16 @@ function App() {
                 <div className='App bg-secondary'>
                 <Navbar/>
                 <Routes>
-                        <Route exact path="/" element={<Home />} />
-                            <Route exact path="about" element={<About />} />
-                            <Route exact path="contact" element={<Contact />} />
-                            <Route exact path='login' element={<Login />} />
-                            <Route exact path='writing' element={<Writing />} />
-                            <Route exact path='project' element={<Project />} />
-                            <Route exact path='admin' element={<Admin />} />
-                            <Route exact path="*" element={<NoPage />} />
+                        <Route path="/" element={<Home />} />
+                            <Route path="about" element={<About />} />
+                            <Route path="contact" element={<Contact />} />
+                            <Route path='login' element={<Login />} />
+                            <Route path='writing' element={<Writing />}>
+                                <Route  path=':id' element={<WritingPage/>}></Route>
+                            </Route>
+                            <Route path='project' element={<Project />} />
+                            <Route path='admin' element={<Admin />} />
+                            <Route path="*" element={<NoPage />} />
                 </Routes>
                 <Footer/>
                 </div>

@@ -1,6 +1,4 @@
-import { NavLink } from 'react-router-dom';
 import React, {useState} from 'react'
-console.log("hello from login")
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

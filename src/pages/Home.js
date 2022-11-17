@@ -5,7 +5,6 @@ import ProjectCard from '../components/project-components/ProjectCard';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 const api = axios.create({baseURL: `http://localhost:5000/project`});
-let arr = [];
 
 function onSubscribeClick(event) {
     console.log(event);
@@ -20,13 +19,12 @@ export default function Home() {
                     ...projects,
                     ...response.data
                 ]);
-                console.log(projects);
             }).catch((error) => {
                 console.log(error);
             });
         };
         getApiData();
-    }, [])
+    },[])
 
     return (
         <>

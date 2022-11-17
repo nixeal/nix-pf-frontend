@@ -1,8 +1,8 @@
 import React from 'react';
-import { useState,useEffect } from 'react';
-import ProjectForm from '../components/form-component/ProjectForm';
-import WritingForm from './../components/form-component/WritingForm';
-import UserForm from './../components/form-component/UserForm';
+import { useState } from 'react';
+import ProjectForm from '../components/form-component/create-form/ProjectForm';
+import WritingForm from '../components/form-component/create-form/WritingForm';
+import UserForm from '../components/form-component/create-form/UserForm';
 import WritingList from '../components/list-component/WritingList';
 import ProjectList from'../components/list-component/ProjectList';
 
@@ -22,7 +22,6 @@ export default function Admin() {
     }
     const showProjectList=(e)=>{
         setIsActive(e.target.id);
-        console.log(isActive);
     }
 
     return (
@@ -71,11 +70,11 @@ export default function Admin() {
                             </div>
                         </div>
                         <div className='col-lg-10'>
-                          {isActive == 1 && <WritingForm/>}
-                          {isActive == 2 && <ProjectForm />}
-                          {isActive == 3 && <UserForm />}
-                          {isActive == 4 && <WritingList/>}
-                          {isActive == 5 && <ProjectList/>}
+                          {isActive === '1' && <WritingForm/>}
+                          {isActive === '2' && <ProjectForm />}
+                          {isActive === '3' && <UserForm />}
+                          {isActive === '4' && <WritingList/>}
+                          {isActive === '5' && <ProjectList/>}
                         </div>
                     </div>
                 </div>

@@ -2,18 +2,46 @@ import React from 'react';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import {Card, Table} from 'react-bootstrap';
+import EditProjectForm from '../form-component/edit-component/EditProjectForm';
 const api = axios.create({baseURL: `http://localhost:5000/project/`});
 
 
 export default function ProjectList() {
+    const [isProject, setIsProject] = useState(true);
     const [projects, setProjects] = useState([]);
+    const [editProjects, setEditProjects] = useState({});
     useEffect(() => {
         api.get('/').then((res) => {
             setProjects([...res.data])
         }).catch((error) => {
             console.log(error);
         })
-    }, [])
+    }, [isProject]);
+    const handleDelete = (e) => {
+        let id = e.target.id;
+        api.delete(`/${id}`).catch((res) => {
+            if (res.data) {
+                let sortedProject = projects.filter((item) => {
+                    return item._id !== id;
+                });
+                setProjects([... sortedProject]);
+            }
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+    const handleEdit = (e) => {
+        let id = e.target.id
+        setIsProject(false);
+        if (id) {
+            api.get(`/${id}`).then((res) => {
+                setEditProjects({
+                    ...res.data
+                });
+                console.log(res.data);
+            }).catch((error) => {})
+        }
+    }
     return (
         <div className='container-box height-auto'>
             <Card className='bg-dark shadow'>
@@ -27,17 +55,37 @@ export default function ProjectList() {
                         </tr>
                     </thead>
                     <tbody> {
-                        projects.length != 0 ? projects.map(item => <tr key={item.id}>
-                            <td>{item.title}</td>
-                            <td>{item.date}</td>
-                            <td>
-                                <button type="button" className="btn btn-outline-primary px-1 me-1">
-                                    Edit
-                                </button>
-                                <button type="button" className="btn btn-outline-danger px-1">Delete</button>
-                            </td>
-                        </tr>
-                        ) : <>Empty List</>
+                        isProject === true ? projects.length !== 0 ? projects.map(item => <>
+                            <tr key={
+                                item.id
+                            }>
+                                <td>{
+                                    item.title
+                                }</td>
+                                <td>{
+                                    item.date
+                                }</td>
+                                <td>
+                                    <button type="button" className="btn btn-outline-primary px-1 me-1"
+                                        onClick={
+                                            (e) => handleEdit(e)
+                                    }>
+                                        Edit
+                                    </button>
+                                    <button type="button"
+                                        id={
+                                            item._id
+                                        }
+                                        onClick={
+                                            (e) => handleDelete(e)
+                                        }
+                                        className="btn btn-outline-danger px-1">Delete</button>
+                                </td>
+                            </tr>
+                        </>) : <>Empty List</> : <>
+                            <EditProjectForm editProjects={editProjects}
+                                setIsProject={setIsProject}/>
+                        </>
                     } </tbody>
                 </Table>
             </Card>

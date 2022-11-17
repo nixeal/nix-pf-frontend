@@ -9,24 +9,19 @@ const api = axios.create({baseURL: `http://localhost:5000/writing`})
 
 export default function About() {
     const [write, setWrite] = useState([]);
-
     useEffect(() => {
         const getApiData = async () => {
-            console.log('start get api function');
             await api.get('/').then((response) => {
-                console.log('inside api function');
                 setWrite([
                     ...write,
                     ...response.data
-                ])
+                ]);
             }).catch((error) => {
                 console.log(error);
-            }). finally(() => {
-                console.log('end of api call');
-            });
+            })
         };
         getApiData();
-    }, [])
+    }, []);
     return (
         <>
             <div className='container-fluid bg-dark col px-4 py-0 text-secondary'>
