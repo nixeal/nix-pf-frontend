@@ -17,9 +17,9 @@ export default function ProjectList() {
             console.log(error);
         })
     }, [isProject]);
-    const handleDelete = (e) => {
+    const handleDelete = async(e) => {
         let id = e.target.id;
-        api.delete(`/${id}`).catch((res) => {
+        await api.delete(`/${id}`).catch((res) => {
             if (res.data) {
                 let sortedProject = projects.filter((item) => {
                     return item._id !== id;
@@ -30,16 +30,18 @@ export default function ProjectList() {
             console.log(error);
         })
     }
-    const handleEdit = (e) => {
-        let id = e.target.id
-        setIsProject(false);
+    const handleEdit=async(e) => {
+        let id = e.target.id;
+        console.log(e.target.id);
         if (id) {
-            api.get(`/${id}`).then((res) => {
-                setEditProjects({
-                    ...res.data
-                });
-                console.log(res.data);
-            }).catch((error) => {})
+            await api.get(`/${id}`).then((res) => {
+                setEditProjects({...res.data});
+                setIsProject(false);
+            }).catch((error) => {
+                console.log(error);
+            })
+        }else{
+            console.log('cannot find id');
         }
     }
     return (
@@ -55,7 +57,8 @@ export default function ProjectList() {
                         </tr>
                     </thead>
                     <tbody> {
-                        isProject === true ? projects.length !== 0 ? projects.map(item => <>
+                            isProject === true?
+                            projects.length !== 0 ? projects.map(item => <>
                             <tr key={
                                 item.id
                             }>
@@ -67,15 +70,14 @@ export default function ProjectList() {
                                 }</td>
                                 <td>
                                     <button type="button" className="btn btn-outline-primary px-1 me-1"
+                                         id={ item._id}
                                         onClick={
                                             (e) => handleEdit(e)
                                     }>
                                         Edit
                                     </button>
                                     <button type="button"
-                                        id={
-                                            item._id
-                                        }
+                                        id={item._id}
                                         onClick={
                                             (e) => handleDelete(e)
                                         }
@@ -83,7 +85,7 @@ export default function ProjectList() {
                                 </td>
                             </tr>
                         </>) : <>Empty List</> : <>
-                            <EditProjectForm editProjects={editProjects}
+                            <EditProjectForm project={editProjects}
                                 setIsProject={setIsProject}/>
                         </>
                     } </tbody>

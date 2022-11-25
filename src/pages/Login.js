@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { useNavigate  } from 'react-router-dom';
 export default function Login() {
+    const [messaqge, setMessage]= useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     async function onSubmit(e) {
         e.preventDefault();
-        const res = await fetch('http://localhost:3000/login', {
+        const res = await fetch('http://localhost:5000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -14,12 +17,13 @@ export default function Login() {
                 {email, password}
             )
         });
+        console.log(res);
         const data = await res.json();
         console.log(data);
         if ( ! data) {
-            window.alert("Invlid Credentials");
+            window.alert("Invalid Credentials");
         } else {
-            window.alert("Sucess");
+            navigate('/');
         }
     }
     return (

@@ -24,7 +24,7 @@ export default function EditWritingForm({writings, setIsWritings}) {
         setCategory(writings.category);
         setDate(writings.date);
         setTags(writings.tags);
-    },[])
+    },[writings])
 
     const handleTitle = (event) => {
         setTitle(event.target.value);
@@ -51,10 +51,11 @@ export default function EditWritingForm({writings, setIsWritings}) {
             category:category
         };
         putWriting(newWriting);
+        setIsWritings(true);
     }
-    const putWriting=(newWriting)=>{
-        api.put(`/${writings._id}`,newWriting).then((res)=>{
-            console.log(res.data);
+    const putWriting=async(newWriting)=>{
+        await api.put(`/${writings._id}`,newWriting).then((res)=>{
+            console.log(res.data.message);
         }).catch((error)=>{
             console.log(error);
         });

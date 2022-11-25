@@ -8,7 +8,7 @@ const api = axios.create({baseURL: `http://localhost:5000/writing/`})
 export default function WritingList() {
     const [isWriting, setIsWritings] = useState(true);
     const [writings, setWritings] = useState([]);
-    const [editWriting, setEditWriting]= useState({});
+    const [editWriting, setEditWriting] = useState({});
     useEffect(() => {
         api.get('/').then((res) => {
             setWritings([...res.data]);
@@ -16,27 +16,31 @@ export default function WritingList() {
             console.log(error);
         });
 
-    },[isWriting]);
-    const handleDelete = (e) => {
+    }, [isWriting]);
+    const handleDelete = async (e) => {
         let id = e.target.id;
-        api.delete(`/${id}`).then((res) => {
+         api.delete(`/${id}`).then((res) => {
             if (res.data) {
                 let sortedWriting = writings.filter((item) => {
                     return item._id !== id;
                 });
-                return setWritings([...sortedWriting]);
+                return setWritings([... sortedWriting]);
             };
         }).catch((error) => {
             console.log(error);
         })
     }
-    const handleEdit = (e) => {
-        let id = e.target.id
-        setIsWritings(false);
+    const handleEdit = async (e) => {
+        let id = e.target.id;
         if (id) {
-            api.get(`/${id}`).then((res) => {
-                setEditWriting({...res.data});
-            }).catch((error) => {})
+             api.get(`/${id}`).then((res) => {
+                setEditWriting({
+                    ...res.data
+                });
+                setIsWritings(false);
+            }).catch((error) => {
+                console.log(error)
+            })
         }
     }
     return (
@@ -53,38 +57,37 @@ export default function WritingList() {
                         </tr>
                     </thead>
                     <tbody>{
-                        isWriting === true ?
-                            writings.length !== 0 ? writings.map(item => <tr key={
-                                item._id
-                            }>
-                                <td>{
-                                    item.title
-                                }</td>
-                                <td>{
-                                    item.date
-                                }</td>
-                                <td>
-                                    <button type="button"
-                                        id={
-                                            item._id
-                                        }
-                                        onClick={
-                                            (e) => handleEdit(e)
-                                        }
-                                        className="btn btn-outline-primary px-1 me-1">
-                                        Edit
-                                    </button>
-                                    <button type="button"
-                                        id={
-                                            item._id
-                                        }
-                                        onClick={
-                                            (e) => handleDelete(e)
-                                        }
-                                        className="btn btn-outline-danger px-1">Delete</button>
-                                </td>
-                            </tr>) : <>Empty List</>
-                        :<EditWritingForm setIsWritings={setIsWritings} writings={editWriting}/>
+                        isWriting === true ? writings.length !== 0 ? writings.map(item => <tr key={
+                            item._id
+                        }>
+                            <td>{
+                                item.title
+                            }</td>
+                            <td>{
+                                item.date
+                            }</td>
+                            <td>
+                                <button type="button"
+                                    id={
+                                        item._id
+                                    }
+                                    onClick={
+                                        (e) => handleEdit(e)
+                                    }
+                                    className="btn btn-outline-primary px-1 me-1">
+                                    Edit
+                                </button>
+                                <button type="button"
+                                    id={
+                                        item._id
+                                    }
+                                    onClick={
+                                        (e) => handleDelete(e)
+                                    }
+                                    className="btn btn-outline-danger px-1">Delete</button>
+                            </td>
+                        </tr>) : <>Empty List</> : <EditWritingForm setIsWritings={setIsWritings}
+                            writings={editWriting}/>
                     }</tbody>
                 </Table>
             </Card>

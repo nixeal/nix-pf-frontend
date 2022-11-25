@@ -7,7 +7,7 @@ export default function WritingCard({writing}) {
             <div className="container-box text-start text-secondary mt-2">
                 <div className="row">
                     <div className='col-lg-2 m-3'>
-                        <Link to={writing._id} >
+                        <Link to={`/writing/${writing._id}`} >
                         <p className="text-start">{writing._id}</p>
                         </Link>             
                     </div>

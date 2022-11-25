@@ -10,28 +10,30 @@ const api = axios.create({baseURL: `http://localhost:5000/project/`});
 
 
 
-export default function EditProjectForm({editProjects, setIsProject}) {
-    console.log(editProjects);
+export default function EditProjectForm({project, setIsProject}) {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [text, setText] = useState('');
     const [type, setType] = useState('');
 
     useEffect(()=>{
+        setTitle(project.title);
+        setDate(project.date);
+        setText(project.text);
+        setType(project.type);
     },[])
 
-    const handleTitle = (event) => {
-        console.log(event.target.value);
-        setTitle(...event.target.value);
+    const handleTitle =(e) => {
+        setTitle(e.target.value);
     }
     const handleText = (e) => {
-        setText(...e.target.value);
+        setText(e.target.value);
     }
     const handleTags = (e) => {
-        setType(...e.target.value);
+        setType(e.target.value);
     }
     const handleDate = (e) => {
-        setDate(...e.target.value);
+        setDate(e.target.value);
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -42,14 +44,16 @@ export default function EditProjectForm({editProjects, setIsProject}) {
             type:type,
         };
         putProject(newProject);
+        setIsProject(true);
     }
     const handleCancel=(e)=>{
         setIsProject(true);
     }
-
-    const putProject=(newProject)=>{
-        api.put(`/${editProjects._id}`,newProject).then((res)=>{
-            res.data ? setIsProject(true): setIsProject(false);
+    
+    const putProject=async(newProject)=>{
+        console.log(newProject);
+        await api.put(`/${project._id}`,newProject).then((res)=>{
+            console.log(res.data.message);
         }).catch((error)=>{
             console.log(error);
         });
@@ -58,7 +62,7 @@ export default function EditProjectForm({editProjects, setIsProject}) {
     return (
         <>
             <div className='container-box  shadow p-3 mb-3'>
-                <h2 className='text-start'>Edit Writing Form</h2>
+                <h2 className='text-start'>Edit Project Form</h2>
                 <Form onSubmit={(e)=>handleSubmit(e)}>
                     <Form.Group as={Row}
                         className="mb-3"
@@ -69,8 +73,8 @@ export default function EditProjectForm({editProjects, setIsProject}) {
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control type="text"
-                                value={editProjects.title}
-                                onChange={(event) => handleTitle(event)}/>
+                                value={title}
+                                onChange={(e) => handleTitle(e)}/>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}
