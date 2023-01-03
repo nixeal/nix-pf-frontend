@@ -5,12 +5,16 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import Writing from '../../../pages/Writing';
+import { add } from '../../../reducer/writingSlice';
 const api = axios.create({baseURL: `http://localhost:5000/writing/`});
 
 
 
 
 export default function WritingForm() {
+    const dispatch = useDispatch();
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [text, setText] = useState('');
@@ -42,14 +46,15 @@ export default function WritingForm() {
             tags:tags,
             category:category
         };
-
+        dispatch(add(newWriting));
         postWriting(newWriting);
     }
-    const postWriting=(newWriting)=>{
-        api.post('/',newWriting).then((res)=>{
-            return console.log(res.data)
+    const postWriting=async(newWriting)=>{
+       await api.post('/',newWriting).then(({data})=>{
+            return console.log(data);
         }).catch((error)=>{
-            console.log(error);
+            const {message}=error.response.data;
+            console.log(message);
         });
     }
 

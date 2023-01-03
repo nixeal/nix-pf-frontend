@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/home.css';
+import { useNavigate } from 'react-router';
 import Card from '../components/Card';
 import ProjectCard from '../components/project-components/ProjectCard';
 import {useEffect, useState} from 'react';
@@ -7,10 +8,11 @@ import axios from 'axios';
 const api = axios.create({baseURL: `http://localhost:5000/project`});
 
 function onSubscribeClick(event) {
-    console.log(event);
+
 }
 
 export default function Home() {
+    const navigate = useNavigate();
     const [projects, setProject] = useState([]);
     useEffect(() => {
         const getApiData = async () => {
@@ -24,7 +26,12 @@ export default function Home() {
             });
         };
         getApiData();
-    },[])
+    },[]);
+    const handleReadMore=(e)=>{
+        if(e){
+            navigate('about');
+        }
+    }
 
     return (
         <>
@@ -38,7 +45,7 @@ export default function Home() {
                         <p className="lead">Do enjoy your life while you still have time. The motivation as a developer people say and i quote "Persistance is key to success"</p>
                         <p className="lead">checkout my few projects and blogs i have written along my way to becomming a software developer</p>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                            <button type="button" className="btn btn-outline-primary btn-lg px-4 me-md-2">Read More..</button>
+                            <button type="button" className="btn btn-outline-primary btn-lg px-4 me-md-2" onClick={(e)=>handleReadMore(e)} >Read More..</button>
                             <button type="button" className="btn btn-outline-danger btn-lg px-4">Subscribe</button>
                         </div>
                     </div>
