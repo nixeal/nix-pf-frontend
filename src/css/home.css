@@ -52,8 +52,4 @@ bd-placeholder-img {
     background-color: rgba(0, 0, 0, .1);
     color: white;
   }
-  h1{
-    color: #fff;
-    text-shadow:0 0 2px #fff,
-    0 0 10px rgb(0, 0, 0);
-  }
+ 

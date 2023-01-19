@@ -11,7 +11,7 @@ const api = axios.create({baseURL: `http://localhost:5000/writing/`});
 
 
 
-export default function EditWritingForm({writings, setIsWritings}) {
+export default function EditWritingForm({writings, setIsEditWriting}) {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [text, setText] = useState('');
@@ -51,7 +51,7 @@ export default function EditWritingForm({writings, setIsWritings}) {
             category:category
         };
         putWriting(newWriting);
-        setIsWritings(true);
+        setIsEditWriting(false);
     }
     const putWriting=async(newWriting)=>{
         await api.put(`/${writings._id}`,newWriting).then((res)=>{
@@ -61,7 +61,7 @@ export default function EditWritingForm({writings, setIsWritings}) {
         });
     }
     const handleCancel=(e)=>{
-        setIsWritings(true);
+        setIsEditWriting(false);
     }
 
     return (

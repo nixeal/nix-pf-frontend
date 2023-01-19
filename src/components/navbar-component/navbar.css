@@ -20,5 +20,11 @@
 
   
   .navbar {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+  }
+  .nav-item{
+    color: aqua;
+  }
+  .custom-tooltip {
+    --bs-tooltip-bg: var(--bs-primary);
   }

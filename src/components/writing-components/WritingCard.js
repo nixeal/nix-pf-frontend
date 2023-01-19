@@ -1,22 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Col, Row, Card, Image, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from '../../utils/ThemeContext';
+import { FaCaretSquareRight } from 'react-icons/fa';
 
-export default function WritingCard({writing}) {
+
+export default function WritingCard({ writing }) {
+    const { theme } = useContext(ThemeContext)
+    const changeDate = (date) => {
+        const newFormat = Date(date)
+        const newDate = newFormat.slice(4, 8) + newFormat.slice(10, 15)
+        return newDate;
+    }
     return (
         <>
-            <div className="container-box text-start text-secondary mt-2">
-                <div className="row">
-                    <div className='col-lg-2 m-3'>
-                        <Link to={`/writing/${writing._id}`} >
-                        <p className="text-start">{writing._id}</p>
-                        </Link>             
-                    </div>
-                    <div className='col-lg-2 m-3'>
-                    <p className='text-end'>{ writing.date}</p>
-                    </div>
-                    <div className='col-lg-8'></div>
-                </div>
-            </div>
+            <li className='text-left p-1 m-0' style={{listStyle:'none'}}>
+                {changeDate(writing.date)}
+                <Link to={`/writing/${writing._id}`}>
+                <FaCaretSquareRight></FaCaretSquareRight>
+                    <a className='fw-bold p-1' >{writing.title}</a>
+
+                </Link>
+            </li>
         </>
     )
 }

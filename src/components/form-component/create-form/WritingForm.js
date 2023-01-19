@@ -8,13 +8,15 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import Writing from '../../../pages/Writing';
 import { add } from '../../../reducer/writingSlice';
+import { Container } from 'react-bootstrap';
+import { Navigate, useNavigate } from 'react-router';
 const api = axios.create({baseURL: `http://localhost:5000/writing/`});
 
 
 
 
-export default function WritingForm() {
-    const dispatch = useDispatch();
+export default function WritingForm({setIsActive}) {
+    const navigate= useNavigate();
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [text, setText] = useState('');
@@ -46,21 +48,25 @@ export default function WritingForm() {
             tags:tags,
             category:category
         };
-        dispatch(add(newWriting));
         postWriting(newWriting);
+        setIsActive(0)
     }
     const postWriting=async(newWriting)=>{
-       await api.post('/',newWriting).then(({data})=>{
-            return console.log(data);
-        }).catch((error)=>{
-            const {message}=error.response.data;
-            console.log(message);
-        });
+        try {
+            let response=await api.post('/',newWriting);
+            if(response.data){
+                console.log('sucess on creating a writing');
+            }
+        } catch (error) {
+            console.log('error on creating a writing');
+            return error;
+        }
+ 
     }
 
     return (
         <>
-            <div className='container-box  shadow p-3 mb-3'>
+            <Container className='container-box  shadow p-3 mb-3'>
                 <h2 className='text-start'>Create Writing Form</h2>
                 <Form onSubmit={(e)=>handleSubmit(e)}>
                     <Form.Group as={Row}
@@ -147,7 +153,7 @@ export default function WritingForm() {
                         </Col>
                     </Form.Group>
                 </Form>
-            </div>
+            </Container>
         </>
     );
 }

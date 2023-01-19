@@ -10,7 +10,7 @@ const api = axios.create({baseURL: `http://localhost:5000/project/`});
 
 
 
-export default function EditProjectForm({project, setIsProject}) {
+export default function EditProjectForm({project, setIsEditProject}) {
     const [title, setTitle] = useState('');
     const [date, setDate] = useState('');
     const [text, setText] = useState('');
@@ -44,19 +44,21 @@ export default function EditProjectForm({project, setIsProject}) {
             type:type,
         };
         putProject(newProject);
-        setIsProject(true);
     }
     const handleCancel=(e)=>{
-        setIsProject(true);
+        console.log(typeof setIsEdit)
+        setIsEditProject(false);
     }
     
     const putProject=async(newProject)=>{
-        console.log(newProject);
-        await api.put(`/${project._id}`,newProject).then((res)=>{
-            console.log(res.data.message);
-        }).catch((error)=>{
-            console.log(error);
-        });
+        try {
+            let response= await api.put(`/${project._id}`,newProject);
+            if(response.data){
+                setIsEditProject(false)
+            }
+        } catch (error) {
+            console.log("error on submitting edited project");
+        }
     }
 
     return (

@@ -2,9 +2,10 @@ import React from 'react'
 import {Col, Button, Form, Row} from 'react-bootstrap';
 import { useState } from 'react';
 import axios from 'axios';
+import { Navigate } from 'react-router';
 const api = axios.create({baseURL: `http://localhost:5000/project`});
 
-export default function ProjectForm() {
+export default function ProjectForm({setIsActive}) {
     const [title, setTitle]=useState('');
     const [text, setText]=useState('');
     const [date,setDate]=useState('');
@@ -18,11 +19,14 @@ export default function ProjectForm() {
                 type:type,
         }
         console.log(newProject);
-        sendNewProject(newProject);
+      let res=  sendNewProject(newProject);
+      if(res){
+        setIsActive(0)
+    }
 
     }
-    const sendNewProject=(newProject)=>{
-        api.post('/',newProject).then((res)=>{
+    const sendNewProject=async(newProject)=>{
+        await api.post('/',newProject).then((res)=>{
             console.log(res);
         }).catch((error)=>{
             console.log(error);

@@ -76,7 +76,6 @@ export default function Login() {
                                     }
                                 }
                                 className="btn btn-primary btn-lg px-4 me-md-2">Login</button>
-                            <button type="button" className="btn btn-outline-secondary me-2 btn-lg px-4">Subscribe</button>
                         </form>
                     </div>
                 </div>
