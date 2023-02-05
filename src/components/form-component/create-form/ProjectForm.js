@@ -100,7 +100,7 @@ export default function ProjectForm({setIsActive}) {
                                 <option value="Angular">Angular</option>
                                 <option value="React">React</option>
                                 <option value="Javascript">Javascript</option>
-                                <option value="Node js">Node Js</option>
+                                <option value="Node js">NodeJs</option>
                             </Form.Select>
                         </Col>
                     </Form.Group>

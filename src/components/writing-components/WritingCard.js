@@ -19,7 +19,6 @@ export default function WritingCard({ writing }) {
                 <Link to={`/writing/${writing._id}`}>
                 <FaCaretSquareRight></FaCaretSquareRight>
                     <a className='fw-bold p-1' >{writing.title}</a>
-
                 </Link>
             </li>
         </>

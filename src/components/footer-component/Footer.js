@@ -14,26 +14,26 @@ export default function Footer() {
                         <ul className="nav hover pb-3 m-3">
                             <li className="nav-item mx-auto">
                                 <a href="#" className="nav-link px-8 text-muted">
-                                    <label className='shadow-sm'>Instagram</label>
                                     <FaInstagram className='shadow-lg fs-1' style={theme} ></FaInstagram>
+                                    <label className='shadow-sm'>Instagram</label>
                                 </a>
                             </li>
                             <li className="nav-item mx-auto">
                                 <a href="#" className="nav-link px-2 text-muted">
-                                    <label className='m-1 shadow-sm'>Facebook</label>
                                     <FaFacebook className='shadow-lg fs-1'></FaFacebook>
+                                    <label className='m-1 shadow-sm'>Facebook</label>
                                 </a>
                             </li>
                             <li className="nav-item mx-auto">
                                 <a href="https://github.com/nixeal" className="nav-link px-2 text-muted">
-                                    <label className='m-1 shadow-sm'>Github</label>
                                     <FaGithub className='fs-1 shadow-lg' ></FaGithub>
+                                    <label className='m-1 shadow-sm'>Github</label>
                                 </a>
                             </li>
                             <li className="nav-item mx-auto">
                                 <a href="https://www.linkedin.com/in/nischal---shrestha/" className="nav-link px-2 text-muted">
-                                    <label className='m-1 shadow-sm'>Linkdin</label>
                                     <FaLinkedin className='shadow-lg fs-1'></FaLinkedin>
+                                    <label className='m-1 shadow-sm'>Linkdin</label>
                                 </a>
                             </li>
                         </ul>

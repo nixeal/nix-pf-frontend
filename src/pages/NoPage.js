@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Container, Modal } from 'react-bootstrap';
+import { ThemeContext } from '../utils/ThemeContext';
 
 export default function NoPage() {
+  const {theme} = useContext(ThemeContext)
   return (
-    <div className=' container-box mt-20'>Nopage found Error :404</div>
+    <Container  style={theme}className='py-4' >
+      <div className='g-row vh-100 py-5 text center'>
+          <h1 style={theme}> Error 404 page not found</h1>          
+      </div>
+    </Container>
   )
 }

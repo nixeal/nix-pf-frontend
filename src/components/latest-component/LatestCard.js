@@ -2,12 +2,18 @@ import React, { useContext } from "react";
 import "./latest.css";
 import {Card} from 'react-bootstrap';
 import { ThemeContext } from "../../utils/ThemeContext";
-export  function LatestCard ({ latests }) {
+import WritingCard from "../writing-components/WritingCard";
+export  function LatestCard ({ latestWriting }) {
+
   const {theme}= useContext(ThemeContext) 
   return (
-      <Card className="latest-card shadow hover" style={theme}>
-        <div className="bottom">
-          <p className="info d-inline">{"nothing"}</p>
+      <Card className="latest-card shadow hover text-left h-auto"  style={theme}>
+        <div className="bottom" >
+          {latestWriting.map((each)=>{
+            return (
+              <WritingCard key={each._id} writing={each}></WritingCard>
+            )
+          })}
         </div>
       </Card>
   );

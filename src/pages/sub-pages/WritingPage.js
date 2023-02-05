@@ -5,14 +5,10 @@ import axios from 'axios';
 import { Card, Container, Navbar, Form, Button } from 'react-bootstrap';
 import { Tag, Heart, Icon0Square } from 'react-bootstrap-icons';
 import { ThemeContext } from '../../utils/ThemeContext';
-import AceEditor from 'react-ace';
-import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-github";
-import code from'../sub-pages/example';
+import CommentCard from'../sub-pages/CommentCard';
 
 
 export default function WritingPage() {
-    const [code, setCode] = useState('');
     const initalState = {
         writing: {},
         comments: []
@@ -55,7 +51,6 @@ export default function WritingPage() {
                 return error;
             }
         }
-        setCode(code);
         getDataById();
         return () => {
             controller.abort();
@@ -80,7 +75,6 @@ export default function WritingPage() {
         }
     };
     return (
-        <>
             <Container style={theme} className='mt-5'>
                 <div className='row py-5'>
                     <div className='col-lg-1 mt-5 '>
@@ -105,19 +99,6 @@ export default function WritingPage() {
                                 <Card.Text>{state.writing.text}</Card.Text>
                                 <Card.Text>{state.writing.date}</Card.Text>
                                 <Card.Link>{state.writing.category}</Card.Link>
-                                <AceEditor
-                                    mode="javascript"
-                                    theme="github"
-                                    onChange={setCode}
-                                    name="ace-editor"
-                                    value={code}
-                                    editorProps={{ $blockScrolling: true }}
-                                    setOptions={{
-                                        showLineNumbers: true,
-                                        tabSize: 2,
-                                    }}
-                                    style={{ width: '100%', height: '500px' }}
-                                />
                             </Card.Body>
                         </Card>
                     </div>
@@ -140,21 +121,14 @@ export default function WritingPage() {
                                 </Form>
                             </Card.Body>
                         </Card>
-                        <Card className='xw-100  mt-2 ' style={theme}>
-                            <Card.Header> Comments</Card.Header>
                             {state.comments.map((e, i) => {
                                 return (
-                                    <Card style={theme} key={e._id} className='m-1 p-1'>
-                                        <Card.Title> By: {e.author}</Card.Title>
-                                        <Card.Text>Comment:{e.text}</Card.Text>
-                                    </Card>
+                                <CommentCard comment={e} key={i} ></CommentCard>
                                 )
                             })}
-                        </Card>
                     </div>
                 </div>
             </Container>
-        </>
     )
 }
 

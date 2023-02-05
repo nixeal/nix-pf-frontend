@@ -86,7 +86,7 @@ export default function ProjectList() {
         <Container className='height-auto'>
             <Card className='shadow' style={theme}>
                 <h2 className='p-2'>Project List</h2>
-                <Table striped bordered hover style={theme}>
+                <Table  bordered hover style={theme}>
                     <thead>
                         <tr>
                             <th>Title</th>

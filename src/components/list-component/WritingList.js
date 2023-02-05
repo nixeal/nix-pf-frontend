@@ -84,7 +84,7 @@ export default function WritingList() {
         <div className='responsive relative' style={theme}>
             <Card className='shadow' style={theme}>
                 <h2 className='p-1 m-1'>Writing List</h2>
-                <Table responsive striped bordered hover  style={theme}>
+                <Table responsive bordered hover  style={theme}>
                     <thead>
                         <tr className='m-1'>
                             <th className='p-1'>Title</th>

@@ -1,5 +1,5 @@
 
-import { ArrowDown, ArrowDownCircle, ArrowDownCircleFill } from 'react-bootstrap-icons';
+import { ArrowDownCircle } from 'react-bootstrap-icons';
 import '../css/home.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router'
@@ -8,7 +8,7 @@ import Card from '../components/card-component/Card';
 import ProjectCard from '../components/project-components/ProjectCard';
 import { useEffect, useContext, useReducer } from 'react';
 import axios from 'axios';
-import { Button, Carousel, Container, Image } from 'react-bootstrap';
+import { Carousel, Container, Form, Image } from 'react-bootstrap';
 import { LatestCard } from '../components/latest-component/LatestCard';
 const api = axios.create({ baseURL: `http://localhost:5000/project` });
 const writingApi = axios.create({ baseURL: `http://localhost:5000/writing` })
@@ -54,9 +54,10 @@ export default function Home() {
         const getData = async () => {
             try {
                 let response = await writingApi.get('/');
-                dispatch({ type: 'FETCH_WRITINGS', payload: response.data });
+                const writinglists = response.data.filter((elem, index) => index < 6);
+                dispatch({ type: 'FETCH_WRITINGS', payload: writinglists });
                 const datas = response.data;
-                const latest = datas.filter((elem, index) => index < 10);
+                const latest = datas.filter((elem, index) => index < 6);
                 dispatch({ type: 'SET_LATESTWRITING', payload: latest });
             } catch (error) {
                 console.log(error);
@@ -82,15 +83,14 @@ export default function Home() {
             <Container style={theme}>
                 <div className="row flex-lg-row-reverse align-items-center g-5 py-4 mt-5">
                     <div className="col-lg-6 mt-10">
-                        
-                        <Image src="./anime.jpg" className="d-block shadow-dark border opacity-40 img-fluid" alt="nixphoto" loading="lazy"></Image>
+                        <Image src="./anime.jpg" className="d-block shadow-dark border opacity-40 img-fluid w-50 h-50 ms-auto" alt="nixphoto" loading="lazy"></Image>
                     </div>
                     <div className="col-lg-6 ">
-                        <div className='p-2'>
-                            <h3 style={theme} className="display-5 fw-bold lh-1 mb-3 p-1">Hi, My name is Nischal Shrestha and I'm a Software Engineer</h3>
-                            <p style={theme}>Do enjoy your life while you still have time. The motivation as a developer people say and i quote "Persistance is key to success"</p>
+                        <div className='p-2 text-right mx-auto'>
+                            <h1 style={theme} className="display-5 fw-bold lh-1 mb-3 p-1">Hi, My name is Nischal Shrestha and I'm a Web  Developer</h1>
+                            <p style={theme}>In my free time, I enjoy traveling to new places and experiencing different cultures. I also love to ride my motorbike and explore the roads less traveled. When I'm not out and about, you can find me at home reading a good book or coding up a storm.</p>
                             <p style={theme}>checkout my few projects and blogs i have written along my way to becomming a software developer</p>
-                            <div className="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <div className="d-grid gap-2 d-md-flex justify-content-md-start" style={{fontFamily:'Roboto'}}>
                                 <button type="button" className="btn btn-outline-primary btn-lg px-4 me-md-2 shadow" onClick={(e) => handleReadMore(e)} >Read More..</button>
                                 <button type="button" className="btn btn-outline-danger btn-lg px-4 shadow" onClick={(e) => onSubscribeClick(e)}>Subscribe</button>
                             </div>
@@ -104,7 +104,7 @@ export default function Home() {
                     <div className='latestpost-seg mb-4 mt-2'>
                         <div className='row '>
                             <div className='col col-lg-6 d-inline '>
-                                <h3 className='fw-4 fs-3'>Latest Post</h3>
+                                <h2 className='fw-4 fs-3'>Latest Post</h2>
                             </div>
                             <div className=' col col-lg-6 d-inline justify-content-bottom' style={{ textAlign: "right" }}>
                                 <Link to={'/writing'} className='p-1'>
@@ -135,7 +135,7 @@ export default function Home() {
                     </div>
                     <div className='project-div mb-4'>
                         <div className='row'>
-                            <h3 className='justify-content-start mb-2'>Projects</h3>
+                            <h4 className='justify-content-start mb-2'>Projects</h4>
                         </div>
                         <div className='row'>
                             {
@@ -168,7 +168,7 @@ export default function Home() {
                                     <Carousel.Item>
                                         <img
                                             className="d-block w-100 h-70 img-fluid"
-                                            src="./logo192.png"
+                                            src="./logo512.png"
                                             alt="Second slide"
                                         />
 
@@ -193,22 +193,23 @@ export default function Home() {
                                     </Carousel.Item>
                                 </Carousel>
                             </div>
-                            <div className='col col-flex'>
-                                Here goes the card component
-                            </div>
                         </div>
                     </div>
                     <div className='g-row mt-5'>
-                        <h2 className='text-decoration-underline p-1'>Stay In Touch With Me</h2>
+                        <h5 className='text-decoration-underline p-1'>Stay In Touch With Me</h5>
                         <p className='p-1'>If i write somethingnew,I'll let you know via newsletter. I am not posting often so please don't spam me!.</p>
+                        <Form className='shadow-light-subtle'>
+                        <Form.Control type="email"  placeholder="email" className='w-50  opacity-60 mb-3' style={theme} />
                         <button type="submit"
                             style={
-                                { width: "50%" }
+                                { width: "50%", 
+                                fontFamily:'Roboto'}
                             }
                             onClick={
                                 (e) => onSubscribeClick(e)
                             }
                             className="btn btn-outlined-danger p-1 mb-5 text-warning btn-lg shadow border hover">Subscribe</button>
+                        </Form>
                     </div>
                 </div>
             </Container>

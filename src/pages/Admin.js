@@ -5,7 +5,7 @@ import WritingForm from '../components/form-component/create-form/WritingForm';
 import UserForm from '../components/form-component/create-form/UserForm';
 import WritingList from '../components/list-component/WritingList';
 import ProjectList from'../components/list-component/ProjectList';
-import { Container, Navbar } from 'react-bootstrap';
+import { Button, Container, Navbar } from 'react-bootstrap';
 import { ThemeContext } from '../utils/ThemeContext';
 
 export default function Admin() {
@@ -33,41 +33,41 @@ export default function Admin() {
                 <div className="px-4 py-5 text-left">
                     <h1 className="display-5 fw-bold text-align-text">Admin Panel</h1>
                     <div className='row'>
-                        <div className='col-lg-2'>
-                            <Navbar>
-                                <ul className='navbar-top' style={{listStyle:'none',width:40}}>
+                        <div className='col-lg-2 border shadow'>
+                            <Navbar expand='lg'>
+                                <ul className='vh-100 p-0' style={{listStyle:'none', width:'100%'}}>
                                     <li className="nav-item mb-2">
-                                        <button type="button" className="btn btn-outline-warning me-2 btn-lg px-4"
+                                        <Button type="button" className="btn btn-outline-warning w-100 "
                                         id='1'
                                         name='writing'
                                             onClick={(e)=>showWriting(e)
                                         }>
-                                            Create Writing</button>
+                                            Create Writing</Button>
                                     </li>
                                     <li className="nav-item mb-2">
-                                        <button type="button" className="btn btn-outline-warning me-2 btn-lg px-4"
+                                        <Button type="button" className="btn btn-outline-warning w-100"
                                         id='2'
                                         name='project'
                                         onClick={(e)=>showProject(e)}
-                                        >Create Project</button>
+                                        >Create Project</Button>
                                     </li>
                                     <li className="nav-item mb-2">
-                                        <button type="button" className="btn btn-outline-warning me-2 btn-lg px-4"
+                                        <Button type="button" className="btn btn-outline-warning w-100 "
                                         id='3'
                                         name='user'
-                                        onClick={(e)=>showUser(e)}>Create Users</button>
+                                        onClick={(e)=>showUser(e)}>Create Users</Button>
                                     </li>
                                     <li className="nav-item mb-2">
-                                        <button type="button" className="btn btn-outline-warning me-2 btn-lg px-4"
+                                        <Button type="button" className="btn btn-outline-warning w-100"
                                         id='4'
                                         name='WritingList'
-                                        onClick={(e)=>showWritingList(e)}>Writing List</button>
+                                        onClick={(e)=>showWritingList(e)}>Writing List</Button>
                                     </li>
                                     <li className="nav-item mb-2">
-                                        <button type="button" className="btn btn-outline-warning me-2 btn-lg px-4"
+                                        <Button type="button" className="btn btn-outline-warning w-100"
                                         id='5'
                                         name='projectList'
-                                        onClick={(e)=>showProjectList(e)}>Project List</button>
+                                        onClick={(e)=>showProjectList(e)}>Project List</Button>
                                     </li>
                                 </ul>
                             </Navbar>
