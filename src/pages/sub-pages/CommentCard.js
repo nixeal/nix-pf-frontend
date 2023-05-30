@@ -3,7 +3,7 @@ import '../sub-pages/comment-card.css';
 
 export default function CommentCard({comment}) {
   return (
-    <div className="container-card mt-2">
+    <div className="container-card mt-2 vh-100">
     <div className="box">
         <div>
             <strong>JOE WATSON SBF</strong>

@@ -44,84 +44,65 @@ export default function About() {
     }, []);
     return (
         <Container style={theme} className='g-5 py-3 mt-3 text-secondary'>
-            <div className='g-row mt-5'>
-                <h3 className="display-4 fw-bold text-align-left" style={{ fontFamily: 'sans-serif' }}>About Me</h3>
-                <div className="row">
-                    <div className="col-flex col-lg-8">
-                        <div className='row text-center'>
-                            <p className="fs-5 mb-4 new p-1">Hi, I'm Nischal! I'm a software developer. Thankyou for taking your little time to peek into my life, and i welcome you to my domain where i post about web development
-                            </p>
-                            <p className="fs-5 mb-4">Hi, I'm Nischal! I'm a software developer. Thankyou for taking your little time to peek into my life, and i welcome you to my domain where i post about web development
-                            </p>
-                            <p className="fs-5 mb-4">Hi, I'm Nischal! I'm a software developer. Thankyou for taking your little time to peek into my life, and i welcome you to my domain where i post about web development
-                            </p>
-                        </div>
+            <div className='row mt-5  p-4'>
+                <div className='col-lg-8'>
+                    <h3 className="fw-bold text-align-left" style={{ fontFamily: 'sans-serif' }}>About Me</h3>
+                    <div className='row-flex text-center'>
+                        <p className="fs-5 mb-4 new p-1">Hi, I'm Nischal! I'm a software developer. Thankyou for taking your little time to peek into my life, and i welcome you to my domain where i post about web development</p>
+                        <p className="fs-5 mb-4">Hi, I'm Nischal! I'm a software developer. Thankyou for taking your little time to peek into my life, and i welcome you to my domain where i post about web development </p>
                     </div>
-                    <div className="col-flex col-lg-4 m-0">
-                        <div className="card1">
-                            <div className="card2">
-                                <Card.Img src="./anime.jpg" className="d-block rounded img-fluid  ms-auto" alt="nixphoto" loading="lazy"></Card.Img>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row text-start m-0">
-                    <h4 className="display-5 fw-bold fs-1">
-                        Currently I'm involved in:</h4>
-                    <hr />
-                    <div className="col-lg-4 mx-auto">
-                        <div className="card1">
-                            <div className="card2">
-                                <Card.Img src="./anime.jpg" className="d-block rounded img-fluid  ms-auto" alt="nixphoto" loading="lazy"></Card.Img>
-                            </div>
-                        </div>                    </div>
-                    <div className="col-lg-8">
+                    <div className="row-flex text-start m-0">
+                        <h3 className="fw-bold">
+                            Currently I'm involved in:</h3>
+                        <hr />
                         <p className="fs-5 mb-4 p-1">As of now, I'm engaged in working as a frontend developer learning new technlogogies sucha as Nextjs and React js. In 2023 i wish to make a good reform for my life so that i could make things go my way.</p>
                         <p className="fs-5 mb-4 p-1">I'm also an optimistic person who tends to see a world little different </p>
                     </div>
+                    <div className='row-flex'>
+                        <h5 className='m-3'>Want to Know more about me! Check out my profile!</h5>
+                        <div className="badge-base mx-3" data-locale="en_US" data-size="medium" data-type="VERTICAL" data-vanity="nischal---shrestha" data-version="v1"><a className=" badge  d-inline" href="https://np.linkedin.com/in/nischal---shrestha?trk=profile-badge">Nischal S.</a></div>
+                    </div>
+                    <div className='row-flex'>
+                        <h5 className='m-3 fw-bold'>Recently doing</h5>
+                        <hr></hr>
+                        <ul className='blue-dot-list'>
+                            <li>Learning to drive a car</li>
+                            <li>Drinking lots of water to remain healthy</li>
+                            <li>Staying warm. It is cold out here...</li>
+                        </ul>
+                    </div>
+                    <div className='row-flex'>
+                        <h5 className='m-3 fw-bold'>Random facts about me</h5>
+                        <hr></hr>
+                        <ul className='blue-dot-list'>
+                            <li>I'm fan of Sci-Fi and Fantasy comic such as Song of Ice and Fire, Marvel comics and many more</li>
+                            <li>I started my journey as a Web Developer since 2022</li>
+                            <li>I like 90's rock musics and also love old Nepali songs</li>
+                            <li>Mobile game I play is Clash Royal which is made by Supercell </li>
+                        </ul>
+                    </div>
+                    <div className='row-flex'>
+                        <h5 className='m-3 fw-bold'>Hardware and PC</h5>
+                        <hr></hr>
+                        <ul className='blue-dot-list'>
+                            <li> coding pc: Lenevo Thinkpad x250</li>
+                        </ul>
+                    </div>
+                    <div className='row-flex'>
+                        <h5 className='m-3 fw-bold'>Software and Technologies used in making this site</h5>
+                        <hr></hr>
+                        <ul className='blue-dot-list'>
+                            <li>react for frontend</li>
+                            <li>node for backend</li>
+                            <li>express</li>
+                            <li>mongoDb for database</li>
+                            <li>jest</li>
+                            <li>jwt configuration</li>
+                            <li>react-bootstrap</li>
+                        </ul>
+                    </div>
                 </div>
-                <div className='row-flex'>
-                    <h5 className='m-3'>Want to Know more about me! Check out my profile!</h5>
-                    <div className="badge-base LI-profile-badge mx-3 " data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="nischal---shrestha" data-version="v1"><a className=" badge badge-base__link LI-simple-link d-inline" href="https://np.linkedin.com/in/nischal---shrestha?trk=profile-badge">Nischal S.</a></div>
-                </div>
-                <div className='row-flex'>
-                    <h5 className='m-3'>Recently doing</h5>
-                    <hr></hr>
-                    <ul>
-                        <li>Learning to drive a car</li>
-                        <li>Drinking lots of water to remain healthy</li>
-                        <li>Staying warm. It is cold out here...</li>
-                    </ul>
-                </div>
-                <div className='row-flex'>
-                    <h5 className='m-3'>Random facts about me</h5>
-                    <hr></hr>
-                    <ul>
-                        <li>I'm fan of Sci-Fi and Fantasy comic such as Song of Ice and Fire, Marvel comics and many more</li>
-                        <li>I started my journey as a Web Developer since 2022</li>
-                        <li>I like 90's rock musics and also love old Nepali songs</li>
-                        <li>Mobile game I play is Clash Royal which is made by Supercell </li>
-                    </ul>
-                </div>
-                <div className='row-flex'>
-                    <h5 className='m-3'>Hardware and PC</h5>
-                    <hr></hr>
-                    <ul>
-                        <li> coding pc: Lenevo Thinkpad x250</li>
-                    </ul>
-                </div>
-                <div className='row-flex'>
-                    <h5 className='m-3'>Software and Technologies used in making this site</h5>
-                    <hr></hr>
-                    <ul>
-                        <li>react for frontend</li>
-                        <li>node for backend</li>
-                        <li>express</li>
-                        <li>mongoDb for database</li>
-                        <li>jest</li>
-                        <li>jwt configuration</li>
-                        <li>react-bootstrap</li>
-                    </ul>
+                <div className='col-lg-4'>
                 </div>
             </div>
         </Container>

@@ -9,6 +9,7 @@ export default function ProjectForm({setIsActive}) {
     const [title, setTitle]=useState('');
     const [text, setText]=useState('');
     const [date,setDate]=useState('');
+    const [link,setLink]=useState('');
     const [type, setType]=useState('');
     const submitProject=(event)=>{
         event.preventDefault();
@@ -16,6 +17,7 @@ export default function ProjectForm({setIsActive}) {
                 title:title,
                 text:text,
                 date:date,
+                link:link,
                 type:type,
         }
         console.log(newProject);
@@ -42,6 +44,10 @@ export default function ProjectForm({setIsActive}) {
     }
     const changeDate=(event)=>{
         setDate(event.target.value);
+        console.log(event.target.value);
+    }
+    const changeLink=(event)=>{
+        setLink(event.target.value);
         console.log(event.target.value);
     }
     const changeType=(event)=>{
@@ -85,6 +91,17 @@ export default function ProjectForm({setIsActive}) {
                         </Form.Label>
                         <Col sm={10}>
                             <Form.Control value={date} onChange={(event)=>changeDate(event)} type="date"/>
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row}
+                        className="mb-3"
+                        controlId="link">
+                        <Form.Label column
+                            sm={2}>
+                            Link
+                        </Form.Label>
+                        <Col sm={10}>
+                            <Form.Control value={link} onChange={(event)=>changeLink(event)} type="text"/>
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row}

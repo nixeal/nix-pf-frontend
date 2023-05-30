@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Card, Container, Navbar, Form, Button } from 'react-bootstrap';
 import { Tag, Heart, Icon0Square } from 'react-bootstrap-icons';
 import { ThemeContext } from '../../utils/ThemeContext';
-import CommentCard from'../sub-pages/CommentCard';
+import CommentCard from '../sub-pages/CommentCard';
 
 
 export default function WritingPage() {
@@ -75,60 +75,20 @@ export default function WritingPage() {
         }
     };
     return (
-            <Container style={theme} className='mt-5'>
-                <div className='row py-5'>
-                    <div className='col-lg-1 mt-5 '>
-                        <Navbar className='hover responsive sticky-left'>
-                            <ul style={{ listStyle: 'none' }} className='m-1 p-1'>
-                                <li>
-                                    <Tag></Tag>
-                                </li>
-                                <li>
-                                    <Heart></Heart>
-                                </li>
-                                <li>
-                                    <Icon0Square></Icon0Square>
-                                </li>
-                            </ul>
-                        </Navbar>
-                    </div>
-                    <div className='col col-lg-8 col-sm-12 mt-2'>
-                        <Card className='vh-100' style={theme}>
-                            <Card.Body>
-                                <Card.Header className='text-center'><Card.Title>{state.writing.title}</Card.Title></Card.Header>
-                                <Card.Text>{state.writing.text}</Card.Text>
-                                <Card.Text>{state.writing.date}</Card.Text>
-                                <Card.Link>{state.writing.category}</Card.Link>
-                            </Card.Body>
-                        </Card>
-                    </div>
-                    <div className='col col-lg-3'>
-                        <Card className='xw-100  mt-2 ' style={theme}>
-                            <Card.Header className='fs-5 fw-bold'>Add Your Comments</Card.Header>
-                            <Card.Body>
-                                <Form onSubmit={handleSubmit} method='post'>
-                                    <Form.Group controlId="formComment">
-                                        <Form.Label className='m-1 p-1'>Comment</Form.Label>
-                                        <Form.Control as="textarea" rows="3" ref={commentRef} />
-                                    </Form.Group>
-                                    <Form.Group controlId="formAuthor">
-                                        <Form.Label className='m-1 p-1'>Author (email)</Form.Label>
-                                        <Form.Control type="email" ref={authorRef} />
-                                    </Form.Group>
-                                    <Button variant="outline-primary" type="submit" className='mt-3 p-1'>
-                                        Submit
-                                    </Button>
-                                </Form>
-                            </Card.Body>
-                        </Card>
-                            {state.comments.map((e, i) => {
-                                return (
-                                <CommentCard comment={e} key={i} ></CommentCard>
-                                )
-                            })}
-                    </div>
+        <Container style={theme} className='mt-5'>
+            <div className='row py-5'>
+                <div className='col m-auto'>
+                    <Card className='vh-100' style={theme}>
+                        <Card.Header className='text-center'><Card.Title>{state.writing.title}</Card.Title></Card.Header>
+                        <Card.Body>
+                            <Card.Text>{state.writing.text}</Card.Text>
+                            <Card.Text>{state.writing.date}</Card.Text>
+                            <Card.Link>{state.writing.category}</Card.Link>
+                        </Card.Body>
+                    </Card>
                 </div>
-            </Container>
+            </div>
+        </Container>
     )
 }
 

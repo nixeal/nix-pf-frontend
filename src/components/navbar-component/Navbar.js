@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import  { useContext } from 'react';
 import '../navbar-component/navbar.css';
-import { Link } from "react-router-dom";
-import { Image, Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Person, Archive, PencilSquare, Envelope } from 'react-bootstrap-icons'
+import { Link, Navigate } from "react-router-dom";
+import { Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Person, Archive, PencilSquare } from 'react-bootstrap-icons'
 import { ThemeContext } from '../../utils/ThemeContext';
 
 
@@ -11,16 +11,9 @@ export default function Navbar() {
     const { theme, toggleTheme } = useContext(ThemeContext);
     return (
         <Nav className="navbar fixed-top navbar-expand-lg shadow" style={theme} >
-            <div className='d-inline'>
-                <Link className="navbar-brand ms-5" to='/'>
-                    <OverlayTrigger
-                        placement="bottom"
-                        overlay={
-                            <Tooltip id="tooltip-home">
-                                Home
-                            </Tooltip>
-                        }>
-                        <span><svg xmlns="http://www.w3.org/2000/svg"  width='200' version="1" viewBox="0 204 500 94" style={theme}>
+            <div className='d-inline my-auto'>
+                <Link className="navbar-brand ms-5 " to='/'>
+                        <span><svg xmlns="http://www.w3.org/2000/svg"  width='150' version="1" viewBox="0 204 500 94" style={theme}>
                             <path
                                 d="M0 2490v-470h5000v940H0v-470zm4970 0v-440H30v880h4940v-440z"
                                 transform="matrix(.1 0 0 -.1 0 500)"
@@ -34,14 +27,13 @@ export default function Navbar() {
                                 transform="matrix(.1 0 0 -.1 0 500)"
                             ></path>
                         </svg></span>
-                    </OverlayTrigger>
                 </Link>
             </div>
-            <button className="navbar-toggler m-1" style={theme} type="button" data-bs-toggle="collapse" data-bs-target="#closenavbar" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler dropdown-toggle m-1" style={theme} type="button" data-bs-toggle="collapse" data-bs-target="navbarNav">
                 <span className="navbar-toggler-icon">
                 </span>
             </button>
-            <div className="collapse navbar-collapse" id="closenavbar">
+            <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav fw-bold fs-5 ms-auto" style={{ fontFamily: "sans-serif" }} >
                     <li className="nav-item nav-home">
                         <OverlayTrigger placement='bottom'

@@ -48,35 +48,31 @@ export default function Writing() {
     }, []);
 
     return (
-        <>
             <Container className='g-5 py-3 mt-3 text-secondary vh-100' style={theme}>
-                <div className='row flex-lg-row-reverse align-items-center g-5 mt-0'>
-                    <h3 className="display-5 fw-bold text-align-text" style={{fontFamily:'sans-serif'}}>Writing</h3>
-                    <div className="row py-1 m-0">
-                        <div className="g-col col-lg-8">
-                            <Card className='p-3 box-shadow-lg' style={theme}>
+                <div className='row mt-5  p-4'>
+                    <h3 className="display-5 fw-bold text-align-text" style={{ fontFamily: 'sans-serif' }}>Writing</h3>
+                    <div className="g-col col-lg-8">
+                        <Card className='p-3 box-shadow-lg' style={theme}>
                             {
-                                state.writings.map((writing)=> <WritingCard writing={writing}/>)
+                                state.writings.map((writing) => <WritingCard writing={writing} />)
                             }
-                            </Card>
-                        </div>
-                        <div className="g-col col-lg-4">
-                            <Card className='shadow-lg p-2 box-shadow' style={theme}>
-                                <h3 className='fw-bold fs-3 text-secondary' style={{fontFamily:'sans-serif'}}>Categories</h3>
-                                <div className='d-inline '>
-                                    {state.category.map((c)=> <Button className='btn btn-sm p-1 m-1 shadow border hover' style={{width:'auto'}}>{c}</Button>)}
-                                </div>
-                            </Card>
-                            <Card className='shadow-lg p-2 mt-4' style={theme}>
-                                <h3 className='fw-bold fs-3 text-secondary' style={{fontFamily:'sans-serif'}}>Tags</h3>
-                                <div className='d-inline'>
-                                    {state.tags.map((tag)=> <Button className='btn btn-sm p-1 m-1 shadow border hover'>{tag}</Button>)}
-                                </div>
-                            </Card>
-                        </div>
+                        </Card>
+                    </div>
+                    <div className="g-col col-lg-4">
+                        <Card className='shadow-lg p-2 box-shadow' style={theme}>
+                            <h3 className='fw-bold fs-3 text-secondary' style={{ fontFamily: 'sans-serif' }}>Categories</h3>
+                            <div className='d-inline '>
+                                {state.category.map((c) => <Button className='btn btn-sm p-1 m-1 shadow border hover' style={{ width: 'auto' }}>{c}</Button>)}
+                            </div>
+                        </Card>
+                        <Card className='shadow-lg p-2 mt-4' style={theme}>
+                            <h3 className='fw-bold fs-3 text-secondary' style={{ fontFamily: 'sans-serif' }}>Tags</h3>
+                            <div className='d-inline'>
+                                {state.tags.map((tag) => <Button className='btn btn-sm p-1 m-1 shadow border hover'>{tag}</Button>)}
+                            </div>
+                        </Card>
                     </div>
                 </div>
             </Container>
-        </>
     )
 }

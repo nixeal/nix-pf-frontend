@@ -6,6 +6,13 @@ import { FaInstagram, FaFacebook, FaGithub, FaLinkedin, FaHeart } from 'react-ic
 export default function Footer() {
     const { theme } = useState(ThemeContext);
     const newdate = new Date().getFullYear();
+    const handleGoToGitHub = () => {
+        window.open('https://github.com', 'nixeal');
+    };
+
+    const handleGoToLinkedin = () => {
+        window.open('https://www.linkedin.com/in/', 'nischal---shrestha');
+    };
     return (
         <>
             <div className='container-fluid shadowlg opacity-60' style={theme}>
@@ -13,28 +20,20 @@ export default function Footer() {
                     <div className='p-2'>
                         <ul className="nav hover pb-3 m-3">
                             <li className="nav-item mx-auto">
-                                <a href="#" className="nav-link px-8 text-muted">
-                                    <FaInstagram className='shadow-lg fs-1' style={theme} ></FaInstagram>
-                                    <label className='shadow-sm'>Instagram</label>
-                                </a>
+                                <FaInstagram className='shadow-lg fs-1'  ></FaInstagram>
+                                <label className='shadow-sm'>Instagram</label>
                             </li>
                             <li className="nav-item mx-auto">
-                                <a href="#" className="nav-link px-2 text-muted">
-                                    <FaFacebook className='shadow-lg fs-1'></FaFacebook>
-                                    <label className='m-1 shadow-sm'>Facebook</label>
-                                </a>
+                                <FaFacebook className='shadow-lg fs-1'></FaFacebook>
+                                <label className='m-1 shadow-sm'>Facebook</label>
                             </li>
-                            <li className="nav-item mx-auto">
-                                <a href="https://github.com/nixeal" className="nav-link px-2 text-muted">
-                                    <FaGithub className='fs-1 shadow-lg' ></FaGithub>
-                                    <label className='m-1 shadow-sm'>Github</label>
-                                </a>
+                            <li className="nav-item mx-auto" onClick={handleGoToGitHub}>
+                                <FaGithub className='fs-1 shadow-lg' ></FaGithub>
+                                <label className='m-1 shadow-sm'>Github</label>
                             </li>
-                            <li className="nav-item mx-auto">
-                                <a href="https://www.linkedin.com/in/nischal---shrestha/" className="nav-link px-2 text-muted">
+                            <li className="nav-item mx-auto" onClick={handleGoToLinkedin}>
                                     <FaLinkedin className='shadow-lg fs-1'></FaLinkedin>
                                     <label className='m-1 shadow-sm'>Linkdin</label>
-                                </a>
                             </li>
                         </ul>
                     </div>
