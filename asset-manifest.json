@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/nixeal/nix-pf-frontend/static/css/main.9c420b9c.css",
-    "main.js": "/nixeal/nix-pf-frontend/static/js/main.175b3e73.js",
-    "static/media/Javascript.png": "/nixeal/nix-pf-frontend/static/media/Javascript.ba0a928588f389c91981.png",
-    "static/media/Node.png": "/nixeal/nix-pf-frontend/static/media/Node.e71346fe0fec16ec5f6e.png",
-    "index.html": "/nixeal/nix-pf-frontend/index.html",
-    "main.9c420b9c.css.map": "/nixeal/nix-pf-frontend/static/css/main.9c420b9c.css.map",
-    "main.175b3e73.js.map": "/nixeal/nix-pf-frontend/static/js/main.175b3e73.js.map"
+    "main.css": "/nixeal/folio/static/css/main.9c420b9c.css",
+    "main.js": "/nixeal/folio/static/js/main.60881741.js",
+    "static/media/Javascript.png": "/nixeal/folio/static/media/Javascript.ba0a928588f389c91981.png",
+    "static/media/Node.png": "/nixeal/folio/static/media/Node.e71346fe0fec16ec5f6e.png",
+    "index.html": "/nixeal/folio/index.html",
+    "main.9c420b9c.css.map": "/nixeal/folio/static/css/main.9c420b9c.css.map",
+    "main.60881741.js.map": "/nixeal/folio/static/js/main.60881741.js.map"
   },
   "entrypoints": [
     "static/css/main.9c420b9c.css",
-    "static/js/main.175b3e73.js"
+    "static/js/main.60881741.js"
   ]
 }
